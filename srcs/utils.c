@@ -6,7 +6,7 @@
 /*   By: delhajou <delhajou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 04:47:25 by delhajou          #+#    #+#             */
-/*   Updated: 2025/04/21 10:21:16 by delhajou         ###   ########.fr       */
+/*   Updated: 2025/04/21 11:50:25 by delhajou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ double	atodbl(char *s)
 	while ('+' == *s || '-' == *s)
 		if ('-' == *s++)
 			sign = -sign;
-
-			
 	while (*s != '.' && *s)
 		int_part = (int_part * 10) + (*s++ - 48);
 	if ('.' == *s)

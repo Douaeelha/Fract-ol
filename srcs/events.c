@@ -6,7 +6,7 @@
 /*   By: delhajou <delhajou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 07:11:03 by delhajou          #+#    #+#             */
-/*   Updated: 2025/04/21 10:44:45 by delhajou         ###   ########.fr       */
+/*   Updated: 2025/04/23 09:57:45 by delhajou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	destroy_handle(t_fractal_data *fractal)
 {
 	mlx_destroy_image(fractal->mlx_connection, fractal->img.image);
 	mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
-	free(fractal->mlx_connection);
 	exit(0);
 }
 
@@ -51,13 +50,11 @@ int	mouse_handle(int mousecode, int x, int y, t_fractal_data *fractal)
 	render(fractal);
 	return (0);
 }
-
 int	track_julia(int x, int y, t_fractal_data *fractal)
 {
 	double	scale_x;
 	double	scale_y;
-
-	if (!ft_strncmp(fractal->name, "julia", 5))
+	if (!ft_strncmp(fractal->name, "julia", 5) && fractal->ac == 2)
 	{
 		scale_x = ((x - (WIDTH / 2.0)) * 4.0 / (WIDTH * fractal->zoom));
 		scale_y = ((y - (HEIGHT / 2.0)) * 4.0 / (HEIGHT * fractal->zoom));

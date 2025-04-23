@@ -6,7 +6,7 @@
 /*   By: delhajou <delhajou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 03:45:07 by delhajou          #+#    #+#             */
-/*   Updated: 2025/04/21 09:43:09 by delhajou         ###   ########.fr       */
+/*   Updated: 2025/04/23 09:56:13 by delhajou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,15 @@ void	my_pixel_put(int x, int y, t_img_data *img, int color)
 	*(unsigned int *)buffer = color;
 }
 
-void	init_set(t_complex *c, t_complex *z, t_fractal_data *fractal)
+void	init_set(t_complex *c, t_complex *z, t_fractal_data *fractal, int ac)
 {
 	if (!ft_strncmp(fractal->name, "julia", 5))
 	{
+		if (ac == 2)
+		{
+			c->real = 0.4;
+			c->i = -0.6;
+		}
 		c->real = fractal->julia_x;
 		c->i = fractal->julia_y;
 	}
@@ -33,6 +38,8 @@ void	init_set(t_complex *c, t_complex *z, t_fractal_data *fractal)
 	{
 		c->real = z->real;
 		c->i = z->i;
+		z->i = 0;
+		z->real = 0;
 	}
 }
 
@@ -42,11 +49,10 @@ void	handle_coordinates(int x, int y, t_fractal_data *fractal)
 	t_complex	c;
 	int			i;
 	int			color;
-	
 
-	z.real = ((x - (WIDTH / 2.0)) * 4.0/ (WIDTH * fractal->zoom))+ fractal->shift_x;
-	z.i = ((y - (HEIGHT / 2.0)) * 4.0 / (HEIGHT * fractal->zoom)) + fractal->shift_y;
-	init_set(&c, &z, fractal);
+	z.real = scale(x, WIDTH, fractal->zoom) + fractal->shift_x;
+	z.i = scale(y, HEIGHT, fractal->zoom) + fractal->shift_y;
+	init_set(&c, &z, fractal, fractal->ac);
 	i = 0;
 	while (i < fractal->max_iteration)
 	{

@@ -6,14 +6,14 @@
 #    By: delhajou <delhajou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/28 16:13:04 by delhajou          #+#    #+#              #
-#    Updated: 2025/04/21 10:35:11 by delhajou         ###   ########.fr        #
+#    Updated: 2025/04/21 16:14:28 by delhajou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-MLX_FLAGS = -L/usr/local/lib -lmlx -framework OpenGL -framework AppKit
+CFLAGS = -Wall -Wextra -Werror 
+MLX_FLAGS = -L/usr/local/lib -lmlx -framework OpenGL -framework AppKit 
 
 SRC = srcs/fractol.c\
 srcs/main.c\
@@ -22,7 +22,6 @@ srcs/utils.c\
 srcs/math.c\
 srcs/events.c\
 srcs/parsing.c\
-
 
 OBJ = $(SRC:.c=.o)
 
