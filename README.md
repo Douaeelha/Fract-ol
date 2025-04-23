@@ -32,3 +32,7 @@ compile with **make**
 ![Banner](mandelbrot.png)
 ./fractol julia -0.4 0.6 to get :
 ![Banner](julia_with_values_0.4_0.6.png)
+
+./fractol julia 
+
+![Fractol Demo](ScreenRecording2025-04-23at12.52.05PM-ezgif.com-optimize(1).gif)
